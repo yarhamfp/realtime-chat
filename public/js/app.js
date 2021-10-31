@@ -4579,6 +4579,69 @@ function ValidationErrors(_ref) {
 
 /***/ }),
 
+/***/ "./resources/js/Layouts/App.js":
+/*!*************************************!*\
+  !*** ./resources/js/Layouts/App.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ App)
+/* harmony export */ });
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+function App(_ref) {
+  var title = _ref.title,
+      children = _ref.children;
+  var _usePage$props = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__.usePage)().props,
+      users = _usePage$props.users,
+      auth = _usePage$props.auth;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    className: "flex min-h-screen",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__.Head, {
+      title: title
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      className: "w-1/3",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "w-1/3 fixed flex flex-col h-full px-6 py-4 text-right border-r space-y-2",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "flex-1 overflow-y-auto",
+          children: users.map(function (user) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__.Link, {
+              href: route("chat.show", user.username),
+              className: "block ".concat(route().current("chat.show", user.username) ? "text-black font-semibold" : "text-gray"),
+              children: user.name
+            }, user.id);
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "bg-gray-100 rounded-xl p-4 space-y-2",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+            children: auth.user.name
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__.Link, {
+            href: route("logout"),
+            method: "POST",
+            as: "button",
+            className: "border bg-white font-medium text-black rounded-xl px-4 py-2",
+            children: "Log out"
+          })]
+        })]
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      className: "w-2/3",
+      children: children
+    })]
+  });
+}
+
+/***/ }),
+
 /***/ "./resources/js/Layouts/Authenticated.js":
 /*!***********************************************!*\
   !*** ./resources/js/Layouts/Authenticated.js ***!
@@ -5440,6 +5503,112 @@ function VerifyEmail(_ref) {
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Chats/Show.js":
+/*!******************************************!*\
+  !*** ./resources/js/Pages/Chats/Show.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Show)
+/* harmony export */ });
+/* harmony import */ var _Layouts_App__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/App */ "./resources/js/Layouts/App.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+function Show(props) {
+  var auth = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.usePage)().props.auth;
+  var user = props.user,
+      chats = props.chats;
+
+  var _useForm = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.useForm)({
+    message: ""
+  }),
+      data = _useForm.data,
+      setData = _useForm.setData,
+      reset = _useForm.reset,
+      errors = _useForm.errors,
+      post = _useForm.post;
+
+  var submitHandler = function submitHandler(event) {
+    event.preventDefault();
+    post(route("chat.store", user.username), {
+      onSuccess: function onSuccess() {
+        reset("message");
+      }
+    });
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Head, {
+      title: "Chat with ".concat(user.name)
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+      className: "flex flex-col justify-between h-screen",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        className: "border-b p-4",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h1", {
+          className: "font-semibold",
+          children: user.name
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        className: "flex-1 overflow-y-auto px-4 py-2 space-y-2",
+        children: chats.length ? chats.map(function (chat) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "flex text-sm ".concat(auth.user.id === chat.sender_id ? "justify-end" : "justify-start"),
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+              className: "w-auto p-4 rounded-xl ".concat(auth.user.id === chat.sender_id ? "bg-green-100 text-green-900" : "bg-gray-100 text-gray-900"),
+              children: chat.message
+            })
+          }, chat.id);
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          className: "text-gray-500",
+          children: "Start chat with someone . . ."
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        className: "border-t py-2",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("form", {
+          onSubmit: submitHandler,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            value: data.message,
+            onChange: function onChange(event) {
+              return setData(_objectSpread(_objectSpread({}, data), {}, {
+                message: event.target.value
+              }));
+            },
+            type: "text",
+            autoComplete: "off",
+            placeholder: "Start typing . . . ",
+            name: "message",
+            id: "message",
+            className: "form-text w-full focus:outline-none focus:border-0 focus:ring-0 border-0"
+          })
+        })
+      })]
+    })]
+  });
+}
+
+Show.layout = function (page) {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Layouts_App__WEBPACK_IMPORTED_MODULE_0__["default"], {
+    children: page
+  });
+};
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Dashboard.js":
 /*!*****************************************!*\
   !*** ./resources/js/Pages/Dashboard.js ***!
@@ -5485,6 +5654,39 @@ function Dashboard(props) {
     })]
   });
 }
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Home.js":
+/*!************************************!*\
+  !*** ./resources/js/Pages/Home.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Home)
+/* harmony export */ });
+/* harmony import */ var _Layouts_App_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Layouts/App.js */ "./resources/js/Layouts/App.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+function Home() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+    className: "px-6 py-4",
+    children: "Start chat now ..."
+  });
+}
+
+Home.layout = function (page) {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Layouts_App_js__WEBPACK_IMPORTED_MODULE_0__["default"], {
+    children: page,
+    title: "Chatty App"
+  });
+};
 
 /***/ }),
 
@@ -58046,8 +58248,12 @@ var map = {
 	"./Auth/ResetPassword.js": "./resources/js/Pages/Auth/ResetPassword.js",
 	"./Auth/VerifyEmail": "./resources/js/Pages/Auth/VerifyEmail.js",
 	"./Auth/VerifyEmail.js": "./resources/js/Pages/Auth/VerifyEmail.js",
+	"./Chats/Show": "./resources/js/Pages/Chats/Show.js",
+	"./Chats/Show.js": "./resources/js/Pages/Chats/Show.js",
 	"./Dashboard": "./resources/js/Pages/Dashboard.js",
 	"./Dashboard.js": "./resources/js/Pages/Dashboard.js",
+	"./Home": "./resources/js/Pages/Home.js",
+	"./Home.js": "./resources/js/Pages/Home.js",
 	"./Welcome": "./resources/js/Pages/Welcome.js",
 	"./Welcome.js": "./resources/js/Pages/Welcome.js"
 };

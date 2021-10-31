@@ -37,6 +37,7 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user(),
             ],
+            'users' => fn() => $request->user() ? \App\Models\User::where('id', '!=', $request->user()->id)->get() : null,
         ]);
     }
 }
